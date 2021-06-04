@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>🌹 21 🌹</title>
+		<meta name="description" content="Animating SVG text on a path on scroll using the Intersection Observer API and SVG filters.">
+		<meta name="keywords" content="svg text, animation, scroll, svg filter, Intersection Observer">
+		<meta name="author" content="Codrops">
+		<link rel="shortcut icon" href="favicon.2e5f6236.ico">
+		<link rel="stylesheet" href="https://use.typekit.net/rhw1vur.css">
+		<link rel="stylesheet" type="text/css" href="base.fd674ed7.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+		<script>document.documentElement.className = "js";
+
+var supportsCssVars = function supportsCssVars() {
+  var e,
+      t = document.createElement("style");
+  return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+};
+
+supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+		<style>* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym827.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym827.png), auto !important;}</style><a href="https://www.cursors-4u.com/cursor/2018/02/17/falling-rose-petals.html" target="_blank" title="Falling Rose Petals"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Falling Rose Petals" style="position:absolute; top: 0px; right: 0px;"></a>
+	</head>
+	<body class="loadin">
+		<svg class="hidden">
+			<defs>
+				<filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+					<feGaussianBlur stdDeviation="0" result="blur" data-min-deviation="0" data-max-deviation="10"></feGaussianBlur>
+					<feMerge>
+						<feMergeNode in="blur"></feMergeNode>
+					</feMerge>
+				</filter>
+				<filter id="blur2" x="-30%" y="-30%" width="160%" height="160%">
+					<feGaussianBlur in="SourceAlpha" stdDeviation="0" result="glow" data-min-deviation="0" data-max-deviation="30"></feGaussianBlur>
+					<feColorMatrix result="bluralpha" type="matrix" values="0 -1 0 0 0 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1.8 0 "></feColorMatrix>
+					<feOffset in="bluralpha" dx="0.000000" dy="0.000000" result="offsetBlur"></feOffset>
+					<feMerge>
+						<feMergeNode in="offsetBlur"></feMergeNode>
+						<feMergeNode in="SourceGraphic"></feMergeNode>
+					</feMerge>
+				</filter>
+				<filter id="distortionFilter">
+					<feTurbulence type="fractalNoise" baseFrequency="0.01 0.03" numOctaves="2" seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="noise"></feTurbulence>
+					<feDisplacementMap in="SourceGraphic" in2="noise" scale="0" data-min-scale="0" data-max-scale="100" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"></feDisplacementMap>
+				</filter>
+				<filter id="distortionFilter2">
+					<feGaussianBlur stdDeviation="10" result="glow"></feGaussianBlur>
+					<feTurbulence type="fractalNoise" baseFrequency="0 0.1" numOctaves="2" seed="2" stitchTiles="noStitch" x="-30%" y="-30%" width="160%" height="160%" result="noise"></feTurbulence>
+					<feDisplacementMap in="SourceGraphic" in2="noise" scale="0" data-min-scale="0" data-max-scale="50" xChannelSelector="R" yChannelSelector="B" x="-30%" y="-30%" width="160%" height="160%" filterUnits="userSpaceOnUse" result="displacement"></feDisplacementMap>
+					<feMerge>
+						<feMergeNode in="glow"></feMergeNode>
+						<feMergeNode in="displacement"></feMergeNode>
+					</feMerge>
+				</filter>
+			</defs>
+		</svg>
+		<main>
+			<div class="frame frame--screen">
+				<div class="frame__title-wrap">
+					<h1 class="frame__title">Un camino por el encierro...</h1>
+				</div>
+				<h2 class="frame__heading"></h2>
+				<div class="frame__counter">
+					<span class="frame__counter-number">01</span>
+					<span class="frame__counter-text">Año</span>
+					<span class="frame__counter-number">03</span>
+					<span class="frame__counter-text">Meses</span>
+				</div>
+			</div>
+			<header class="intro">
+				<h1 class="intro__title">Diario</h1>
+				<p class="intro__hint">~ de cuarentena ~</p>
+				<img src="candado.e799f729.gif" alt="candado" width="200" height="200">
+			</header>
+			<div class="grid">
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+					<img class="grid__item-img" src="19.43e0ec7c.jpg" alt="Some image">
+					<h3 class="grid__item-title">Mundo exterior</h3>
+					<p class="grid__item-description">De vez en cuando busco alguna excusa para visitarlo
+						 y pretender volver a la normalidad por algunos instantes.</p>
+				</div>
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+					<img class="grid__item-img" src="12.22e462d0.jpg" alt="Some image">
+					<h3 class="grid__item-title">Vista desde mi ventana</h3>
+					<p class="grid__item-description">Me gusta coleccionar fotos del atardecer que veo desde mi ventana. 
+						Quizás por sea la contamincación de invierno, pero estos días han estado muy lindos.</p>
+				</div>
+			</div>
+			<svg class="svgtext svgtext--1" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve1" d="M 0 100 Q 250 200 500 100 Q 750 0 1000 100" fill="none"></path>
+				<text filter="url(#blur)">
+					<textPath href="#text-curve1">
+						My God, I'm so lonely. So I open the window
+					</textPath>
+				</text>
+			</svg>
+			<svg class="svgtext" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve11" d="M 0 100 Q 250 0 500 100 Q 750 200 1000 100" fill="none"></path>
+				<text filter="url(#blur2)">
+					<textPath href="#text-curve11">
+						To hear sounds of people. To hear sounds of people
+					</textPath>
+				</text>
+			</svg>
+			<div class="grid">
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+				   <img class="grid__item-img" src="21.c0117cbc.jpg" alt="Some image">
+					<h3 class="grid__item-title">Compañía</h3>
+					<p class="grid__item-description">La verdad es que sin ellos no sé que haría.</p>
+				</div>
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+					<img class="grid__item-img" src="puertas.caaa6c6c.gif" alt="Some image">
+					<h3 class="grid__item-title">Monotonía</h3>
+					<p class="grid__item-description">La extrañeza del encierro se volvió cotidiana. Me cuesta diferenciar entre los días.</p>
+				</div>
+			</div>
+			<svg class="svgtext svgtext--2" data-filter-type="distortion" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve2" d="M 0 50 Q 100 0 200 100 Q 300 200 650 50 C 750 0 750 150 1000 50" fill="none"></path>
+				<text filter="url(#distortionFilter)">
+					<textPath href="#text-curve2">
+						A week like a nightmare, another month, a year
+
+					</textPath>
+				</text>
+			</svg>
+			<svg class="svgtext" data-filter-type="distortion" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 300">
+				<path id="text-curve22" d="M 0 200 Q 150 300 300 200 Q 700 0 1000 150" fill="none"></path>
+				<text filter="url(#distortionFilter2)">
+					<textPath href="#text-curve22">
+						I want to see you again, our shining summer
+					</textPath>
+				</text>
+			</svg>
+			<div class="grid">
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+					<img class="grid__item-img" src="32.cd904e8b.jpg" alt="Some image">
+					<h3 class="grid__item-title">Nostalgia</h3>
+					<p class="grid__item-description">Vuelvo a visitar recuerdos pasados una y otra vez.</p>
+				</div>
+				<div class="grid__item">
+					<span class="grid__item-number"></span>
+					<img class="grid__item-img" src="28.26f14531.JPG" alt="Some image">
+					<h3 class="grid__item-title">Apreciación</h3>
+					<p class="grid__item-description">A pesar de todo, me alegra haberme podido conocer un poco mejor.</p>
+				</div>
+			</div>
+			<svg class="svgtext svgtext--3" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve3" d="M 0 150 Q 200 50 500 50 Q 800 50 1000 150 " fill="none"></path>
+				<text filter="url(#blur)">
+					<textPath href="#text-curve3">
+					Kinda feel like thinking back, the time goes fast
+					</textPath>
+				</text>
+			</svg>
+			<svg class="svgtext svgtext--3" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve4" d="M 0 150 Q 200 50 500 50 Q 800 50 1000 150 " fill="none"></path>
+				<text filter="url(#blur)">
+					<textPath href="#text-curve4">
+					I remember the time when we would toss our lives as if they were wishing coins
+					</textPath>
+				</text>
+			</svg>
+			<svg class="svgtext svgtext--3" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+				<path id="text-curve5" d="M 0 150 Q 200 50 500 50 Q 800 50 1000 150 " fill="none"></path>
+				<text filter="url(#blur)">
+					<textPath href="#text-curve5">
+					I didn't know a lot, I think I'm still the same. I am still exploring my own galaxy
+					</textPath>
+				</text>
+			</svg>
+			<img class="bigimg" src="31.0faa7da5.gif">
+			<div class="grid-wrap">
+				<svg class="svgtext svgtext--4" data-filter-type="blur" width="120%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 200">
+					<path id="textcircle" d="M 0 0 Q 200 150 500 150 Q 850 150 1000 0 " fill="none"></path>
+					<text filter="url(#blur)">
+						<textPath href="#textcircle">
+						I hope you like it where I'm now
+						</textPath>
+					</text>
+				</svg>
+				</div>
+			
+		</main>
+		<!--script src="https://tympanus.net/codrops/adpacks/demoad.js"></script-->
+		<script src="js.ac477e1f.js"></script>
+	</body>
+</html>
